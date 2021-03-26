@@ -1,0 +1,73 @@
+# -*- coding: utf-8 -*-
+import random
+import numpy as np
+ncartas = int(input("Ingrese numero de cartas"))
+a = []
+b= []
+c = []
+d = []
+
+for i in range(ncartas):
+    i+=1
+    c.append(i)
+    a.append(i)
+    b.append('*')
+    d.append('*')
+tablero = []
+cartas = []
+random.shuffle(c)
+cartas.append(c)
+random.shuffle(a)
+cartas.append(a)
+cartas = np.array(cartas)
+tablero.append(b)
+tablero.append(d)
+tablero = np.array(tablero)
+
+
+print('la coordenada es solo un numero contando desde el 0 de izquierda a derecha')
+
+pj1 = 0
+pj2 = 0 
+ptotal = pj1 + pj2 
+for ptotal in range(ncartas):
+    j11 = int(input("jugador 1, ingrese coordenada carta 1")) 
+    tablero[0][j11] = cartas[0][j11]
+    print (tablero)
+    j12 = int(input("jugador 1, ingrese coordenada carta 2")) 
+    tablero[1][j12] = cartas[1][j12]
+    print (tablero)
+    if cartas[0][j11] == cartas[1][j12]:
+                pj1 +=1
+                tablero[0][j11] = '  '
+                tablero[1][j12] = '  ' 
+                continue
+    else :
+        tablero[0][j11] = '*'
+        tablero[1][j12] = '*'
+    print ("el tablero está así")
+    print(tablero)
+    j21 = int(input("jugador 2, ingrese coordenada carta 1"))
+    tablero[0][j21] = cartas[0][j21]
+    print(tablero)
+    j22 = int(input("jugador 2, ingrese coordenada carta 2"))
+    tablero[1][j22] = cartas[0][j22]
+    print(tablero)
+    if cartas[0][j21] == cartas[1][j22]:
+        pj2 +=1
+        tablero[0][j21] = '  '
+        tablero[1][j22] = '  '
+        continue
+    else :
+         tablero[0][j21] = '*'
+         tablero[1][j22] = '*'
+    print ("el tablero está así")
+    print(tablero)
+        
+if pj1 > pj2:
+    print("Gana Jugador 1")
+
+if pj2 > pj1 :
+    print("Gana jugador 2")
+    
+    
